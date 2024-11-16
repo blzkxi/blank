@@ -1,0 +1,241 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: black;
+    color: white;
+    font-family: 'Unbounded', sans-serif;
+    text-transform: uppercase;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Slideshow styles */
+.slideshow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+.slideshow-container.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.slide {
+    --slide-duration: 2500ms;
+    --fade-duration: 800ms;
+    --transition-delay: 200ms;
+    
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    padding: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--fade-duration) ease,
+                transform var(--fade-duration) ease;
+}
+
+/* Effect variations */
+.slide[data-effect="fade"] {
+    transform: none;
+}
+
+.slide[data-effect="glitch"] {
+    --glitch-intensity: 0.5;
+    --glitch-duration: 200ms;
+    animation: glitch var(--glitch-duration) ease-out;
+}
+
+.slide[data-effect="matrix"] {
+    --matrix-density: 0.05;
+    --matrix-speed: 50ms;
+    --matrix-characters: "0123456789ABCDEF";
+    animation: matrix-rain var(--matrix-speed) linear;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-text {
+    font-size: clamp(24px, 5vw, 48px);
+    font-weight: 700;
+    line-height: 1.4;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Canvas and logo styles */
+.starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.logo-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.logo {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+/* Content styles */
+.content-box {
+    position: relative;
+    text-align: center;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+h1 {
+    font-size: clamp(48px, 8vw, 72px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    opacity: 0.95;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.tagline {
+    font-size: clamp(14px, 2vw, 16px);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 24px auto;
+    max-width: 65ch;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+/* Button styles */
+.cta-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.cta-button {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 1rem 2rem;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button:hover {
+    background: white;
+    color: black;
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.cta-button:active {
+    transform: translateY(0);
+}
+
+/* Language switch button */
+.lang-switch {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 0.5rem 1rem;
+    font-family: 'Unbounded', 'Noto Sans Arabic', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lang-switch:hover {
+    background: white;
+    color: black;
+}
+
+/* RTL support */
+[dir="rtl"] .lang-switch {
+    right: auto;
+    left: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .cta-container {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0 2rem;
+    }
+
+    .tagline {
+        padding: 0 2rem;
+    }
+
+    .lang-switch {
+        top: 1rem;
+        right: 1rem;
+    }
+}
+
+/* Animation keyframes */
+@keyframes glitch {
+    0% {
+        clip-path: inset(50% 0 30% 0);
+        transform: translate(-5px, 5px);
+    }
+    50% {
+        clip-path: inset(40% 0 40% 0);
+        transform: translate(5px, -5px);
+    }
+    100% {
+        clip-path: inset(30% 0 50% 0);
+        transform: translate(0, 0);
+    }
+}
+
+.matrix-background {
+    opacity: 0.8;
+    mix-blend-mode: screen;
+}
