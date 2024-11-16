@@ -12,7 +12,7 @@ export class MatrixEffect {
             color: options.color || '#0F0',
             fadeLength: options.fadeLength || 0.8,
             mouseInteraction: options.mouseInteraction !== false,
-            mouseRadius: options.mouseRadius || 100,
+            mouseRadius: options.mouseRadius || 150,
             mouseForce: options.mouseForce || 2,
             streams: [],
             ...options
@@ -80,15 +80,28 @@ export class MatrixEffect {
         const distance = Math.sqrt(dx * dx + dy * dy);
         
         if (distance < this.options.mouseRadius) {
-            const force = (1 - distance / this.options.mouseRadius) * this.options.mouseForce;
-            stream.x += (dx / distance) * force;
-            stream.speed = Math.max(1, stream.baseSpeed + force);
+            // Calculate intensity based on distance (closer = stronger effect)
+            const intensity = 1 - (distance / this.options.mouseRadius);
             
-            // Gradually return to original position
-            if (Date.now() - this.mouse.lastMove > 100) {
-                stream.x += (stream.baseX - stream.x) * 0.05;
-                stream.speed += (stream.baseSpeed - stream.speed) * 0.1;
+            // Create a glowing effect with white core and custom color trail
+            if (distance < this.options.mouseRadius * 0.2) {
+                // Inner radius: white glow
+                stream.color = `rgba(255, 255, 255, ${intensity})`;
+                stream.speed = stream.baseSpeed * 2;
+            } else {
+                // Outer radius: color trail (cyan/blue effect)
+                stream.color = `rgba(0, 255, 255, ${intensity})`;
+                stream.speed = stream.baseSpeed * 1.5;
             }
+            
+            // Gradually return to original state
+            if (Date.now() - this.mouse.lastMove > 100) {
+                stream.color = undefined;
+                stream.speed = stream.baseSpeed;
+            }
+        } else {
+            stream.color = undefined;
+            stream.speed = stream.baseSpeed;
         }
     }
 
@@ -134,11 +147,18 @@ export class MatrixEffect {
             const y = stream.y - (i * this.options.fontSize);
             const alpha = 1 - (i / stream.length) * this.options.fadeLength;
             
-            this.ctx.fillStyle = this.options.color.replace(')', `, ${alpha})`);
+            if (stream.color) {
+                // Use full stream color for affected streams
+                this.ctx.fillStyle = stream.color;
+            } else {
+                // Default matrix color with fade effect
+                this.ctx.fillStyle = `rgba(0, 255, 0, ${alpha})`;
+            }
+            
             this.ctx.fillText(stream.characters[i], stream.x, y);
             
-            // Randomly change characters
-            if (Math.random() < 0.05) {
+            // Increase character change rate near mouse
+            if (stream.color && Math.random() < 0.3) {
                 stream.characters[i] = this.options.characters.charAt(
                     Math.floor(Math.random() * this.options.characters.length)
                 );
