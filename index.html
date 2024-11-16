@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASAS AI | Artificial Intelligence and Consulting in Saudi Arabia - Riyadh, Jeddah, Dammam, Mecca | الذكاء الاصطناعي والاستشارات في السعودية | AI Consulting Saudi Arabia</title>
+    <meta name="description" content="ASAS - Leading AI consulting services in Saudi Arabia. Expert artificial intelligence solutions and consulting in Riyadh, Jeddah, Dammam, and Mecca. خدمات استشارات الذكاء الاصطناعي في المملكة العربية السعودية">
+    <meta name="keywords" content="AI consulting, artificial intelligence, Saudi Arabia, Riyadh, Jeddah, Dammam, Mecca, الذكاء الاصطناعي, استشارات, السعودية, الرياض, جدة, الدمام, مكة">
+    <meta property="og:title" content="ASAS | AI Consulting Saudi Arabia">
+    <meta property="og:description" content="Leading AI consulting services across Saudi Arabia. Expert artificial intelligence solutions and consulting.">
+    <meta property="og:type" content="website">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English, Arabic">
+    <script>
+        // Create favicon programmatically
+        const favicon = document.createElement('link');
+        favicon.rel = 'icon';
+        favicon.type = 'image/svg+xml';
+        favicon.href = `data:image/svg+xml,${encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <rect width="100" height="100" fill="black"/>
+                <svg x="20" y="20" width="60" height="60" viewBox="0 0 50 51">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M40.8175 50.6049L36.5893 39.7634L9.67463 50.6049H0.888916L20.8175 0.604919H29.6032L49.6032 50.6049H40.8175ZM34.1285 33.4536L25.2461 10.6782L12.9618 42.1763L34.1285 33.4536Z" fill="white"/>
+                </svg>
+            </svg>
+        `)}`;
+        document.head.appendChild(favicon);
+    </script>
+    <style>
+        body {
+            margin: 0;
+            background: black;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Unbounded', sans-serif;
+            text-transform: uppercase;
+            overflow: hidden;
+        }
+
+        .logo-container {
+            position: relative;
+            width: 40vw;
+        }
+
+        .logo {
+            width: 100%;
+            height: auto;
+            fill: rgba(255, 255, 255, 0.03);
+            stroke: rgba(255, 255, 255, 0.1);
+            stroke-width: 0.5px;    
+            filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
+            transition: filter 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                fill: white;
+                stroke: none;
+                filter: none;
+            }
+        }
+
+        .email {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            font-size: 12px;
+            font-family: 'Unbounded', sans-serif;
+            letter-spacing: 0.05em;
+        }
+        h1 {
+            margin-top: 32px;
+            font-size: clamp(48px, 8vw, 72px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            opacity: 0.95;
+            line-height: 1.2;
+            padding: 0 1rem;
+        }
+
+        .cta-container {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0 1rem;
+        }
+
+        .cta-button {
+            padding: 12px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            color: white;
+            text-decoration: none;
+            transition: border-color 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+            font-family: 'Unbounded', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 4px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.01);
+            filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
+            pointer-events: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .cta-button:hover::before {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .cta-button:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .content-box {
+            max-width: 800px;
+            width: 90%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tagline {
+            font-size: clamp(14px, 2vw, 16px);
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 24px 0;
+            padding: 0 1rem;
+            max-width: 65ch;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        @media (max-width: 480px) {
+            .content-box {
+                padding: 1rem;
+                width: 95%;
+            }
+
+            .cta-container {
+                gap: 12px;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500&family=Unbounded:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="logo-container">
+            <svg width="2025" height="204" viewBox="0 0 2025 204" class="logo" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M1197.29 114.688C1195.24 131.755 1189.27 146.773 1179.37 159.744C1169.64 172.715 1156.67 182.784 1140.46 189.952C1124.41 197.12 1105.98 200.704 1085.16 200.704C1062.63 200.704 1042.92 196.523 1026.02 188.16C1009.13 179.797 995.987 168.107 986.6 153.088C977.213 138.069 972.52 120.491 972.52 100.352C972.52 80.2133 977.213 62.6347 986.6 47.616C995.987 32.5973 1009.13 20.9067 1026.02 12.544C1042.92 4.18134 1062.63 0 1085.16 0C1105.98 0 1124.41 3.584 1140.46 10.752C1156.67 17.92 1169.64 27.9893 1179.37 40.96C1189.27 53.76 1195.24 68.7787 1197.29 86.016H1137.38C1135.68 78.6773 1132.52 72.448 1127.91 67.328C1123.47 62.0373 1117.67 58.0267 1110.5 55.296C1103.34 52.3947 1094.89 50.944 1085.16 50.944C1074.24 50.944 1064.85 52.9067 1057 56.832C1049.15 60.7573 1043.09 66.4747 1038.82 73.984C1034.56 81.3227 1032.42 90.112 1032.42 100.352C1032.42 110.592 1034.56 119.381 1038.82 126.72C1043.09 134.059 1049.15 139.776 1057 143.872C1064.85 147.797 1074.24 149.76 1085.16 149.76C1094.89 149.76 1103.34 148.48 1110.5 145.92C1117.67 143.189 1123.47 139.179 1127.91 133.888C1132.52 128.597 1135.68 122.197 1137.38 114.688H1197.29ZM301.288 129.792V196.352H241.64V4.35199H358.888C373.736 4.35199 386.792 6.99733 398.056 12.288C409.32 17.5787 418.109 24.9173 424.424 34.304C430.739 43.6907 433.896 54.6987 433.896 67.328C433.896 79.616 430.739 90.5387 424.424 100.096C418.109 109.483 409.32 116.821 398.056 122.112C395.099 123.456 392.018 124.624 388.814 125.615L432.303 184.781L512.894 4.35199H591.742L677.758 196.352H614.014L599.53 161.792H505.16L490.622 196.352H372.456L325.049 129.792H301.288ZM777.486 4.35199C800.526 4.35199 820.665 8.36266 837.902 16.384C855.31 24.2347 868.793 35.328 878.35 49.664C888.078 64 892.942 80.896 892.942 100.352C892.942 119.637 888.078 136.533 878.35 151.04C868.793 165.376 855.31 176.555 837.902 184.576C820.665 192.427 800.526 196.352 777.486 196.352H678.67V4.35199H777.486ZM962.458 4.35199H902.81V196.352H962.458V4.35199ZM1256.72 161.792L1242.18 196.352H1178.69L1264.45 4.35199H1343.3L1429.32 196.352H1365.57L1351.09 161.792H1256.72ZM1489.88 4.35199V143.36H1605.97C1605.97 143.19 1605.97 143.019 1605.97 142.848C1605.97 125.099 1613.74 112.128 1629.27 103.936C1635.42 100.726 1642.5 98.3282 1650.52 96.7429C1644.12 95.1317 1638.4 93.0067 1633.36 90.368C1618.68 82.688 1611.35 71.168 1611.35 55.808C1611.35 38.2293 1619.88 24.576 1636.95 14.848C1654.18 4.94933 1679.1 0 1711.7 0C1744.3 0 1769.13 4.94933 1786.19 14.848C1803.26 24.576 1811.79 38.2293 1811.79 55.808C1811.79 71.168 1804.46 82.688 1789.78 90.368C1784.75 92.9993 1779.05 95.1198 1772.68 96.7293C1780.71 98.3145 1787.77 100.717 1793.87 103.936C1809.4 112.128 1817.17 125.099 1817.17 142.848C1817.17 161.621 1808.21 175.957 1790.29 185.856C1772.37 195.755 1746.17 200.704 1711.7 200.704C1677.22 200.704 1650.94 195.755 1632.85 185.856C1616.19 176.651 1607.27 163.608 1606.1 146.729V196.352H1430.23V4.35199H1489.88ZM1928.34 0C1945.41 0 1960.51 2.64532 1973.66 7.93599C1986.97 13.056 1997.63 20.0533 2005.66 28.928C2013.85 37.632 2018.8 47.5307 2020.5 58.624H1965.98C1963.76 54.016 1959.75 50.176 1953.94 47.104C1948.14 44.032 1940.12 42.496 1929.88 42.496C1918.27 42.496 1908.55 44.6293 1900.7 48.896C1893.02 53.1627 1887.21 59.392 1883.29 67.584C1879.53 75.776 1877.66 85.8453 1877.66 97.792C1877.66 97.9606 1877.66 98.1289 1877.66 98.2968C1878 97.9555 1878.34 97.6165 1878.68 97.28C1886.87 89.088 1896.6 82.688 1907.86 78.08C1919.3 73.3013 1932.27 70.912 1946.78 70.912C1962.99 70.912 1976.81 73.5573 1988.25 78.848C1999.85 84.1387 2008.73 91.4773 2014.87 100.864C2021.19 110.251 2024.34 121.088 2024.34 133.376C2024.34 146.347 2020.67 157.952 2013.34 168.192C2006 178.261 1995.33 186.197 1981.34 192C1967.34 197.803 1950.1 200.704 1929.62 200.704C1905.56 200.704 1885.59 196.437 1869.72 187.904C1853.85 179.371 1841.99 167.595 1834.14 152.576C1826.46 137.387 1822.62 120.064 1822.62 100.608C1822.62 81.152 1826.54 63.8293 1834.39 48.64C1842.24 33.4507 1854.02 21.5893 1869.72 13.056C1885.42 4.35201 1904.96 0 1928.34 0ZM0 20.9612C0 9.57904 9.22702 0.352005 20.6091 0.352005H182.391C193.773 0.352005 203 9.57903 203 20.9612V182.743C203 194.125 193.773 203.352 182.391 203.352H20.6091C9.22704 203.352 0 194.125 0 182.743V20.9612ZM1884.19 132.124C1888.43 140.602 1894.36 146.992 1901.98 151.296C1909.83 155.733 1919.38 157.952 1930.65 157.952C1937.99 157.952 1944.22 156.928 1949.34 154.88C1954.46 152.832 1958.3 150.101 1960.86 146.688C1963.42 143.275 1964.7 139.52 1964.7 135.424C1964.7 130.816 1963.42 126.891 1960.86 123.648C1958.47 120.235 1954.8 117.675 1949.85 115.968C1944.9 114.261 1938.84 113.408 1931.67 113.408C1921.94 113.408 1912.56 115.456 1903.51 119.552C1896.79 122.47 1890.35 126.66 1884.19 132.124ZM1745.49 151.296C1737.81 154.368 1726.55 155.904 1711.7 155.904C1696.85 155.904 1685.59 154.368 1677.91 151.296C1670.23 148.053 1666.39 143.36 1666.39 137.216C1666.39 131.243 1670.23 126.72 1677.91 123.648C1685.59 120.576 1696.85 119.04 1711.7 119.04C1726.55 119.04 1737.81 120.576 1745.49 123.648C1753.17 126.72 1757.01 131.243 1757.01 137.216C1757.01 143.36 1753.17 148.053 1745.49 151.296ZM1711.7 79.104C1720.57 79.104 1728 78.5067 1733.97 77.312C1740.11 75.9467 1744.72 73.984 1747.79 71.424C1751.04 68.864 1752.66 65.7067 1752.66 61.952C1752.66 56.4907 1749.16 52.3093 1742.16 49.408C1735.16 46.336 1725.01 44.8 1711.7 44.8C1698.22 44.8 1687.98 46.336 1680.98 49.408C1673.98 52.3093 1670.48 56.4907 1670.48 61.952C1670.48 65.7067 1672.02 68.864 1675.09 71.424C1678.33 73.984 1682.94 75.9467 1688.91 77.312C1695.06 78.5067 1702.65 79.104 1711.7 79.104ZM1276.75 114.176H1331.13L1303.99 49.4137L1276.75 114.176ZM737.806 143.36H782.094C792.505 143.36 801.465 141.653 808.974 138.24C816.654 134.656 822.542 129.621 826.638 123.136C830.734 116.651 832.782 109.056 832.782 100.352C832.782 91.4773 830.734 83.8827 826.638 77.568C822.542 71.0827 816.654 66.1333 808.974 62.72C801.465 59.136 792.505 57.344 782.094 57.344H737.806V143.36ZM525.189 114.176H579.574L552.431 49.4136L525.189 114.176ZM349.928 87.296H301.288V47.36H349.928C357.437 47.36 363.24 49.0667 367.336 52.48C371.603 55.8933 373.736 60.8427 373.736 67.328C373.736 73.8133 371.603 78.7627 367.336 82.176C363.24 85.5893 357.437 87.296 349.928 87.296ZM56.6449 65.01C54.7931 80.0889 50.4281 93.316 40.7723 101.385L55.1899 110.379C66.5652 100.856 70.5334 85.1152 72.782 68.4491L56.6449 65.01ZM90.1095 82.073V40.5398H107.437V81.9407C107.437 102.046 119.871 132.733 161.139 147.944C157.568 151.515 152.542 158.261 150.161 162.891C118.416 149.928 102.411 123.342 98.7072 110.247C95.1358 123.738 80.586 149.531 49.2377 162.891C47.1214 159.319 41.566 152.574 38.1269 149.267C78.0728 134.056 90.1095 101.914 90.1095 82.073ZM147.728 64.7455C143.76 76.5176 136.353 91.8611 130.136 101.649L143.892 107.734C150.506 98.4746 158.574 84.3216 165.32 71.4913L147.728 64.7455Z"/>
+                </svg>
+
+
+        </div>
+
+        <div class="content-box">
+            <h1>TARO RETURNS</h1>
+            <p class="tagline">Imagine AI that truly understands you - your language, your culture, your aspirations. For too long, the MENA region has adapted to technology. Now, we're crafting AI that adapts to you. Join us as we build tools that don't just work in Arabic, but think in it. Because the future of AI shouldn't just be accessible - it should feel like home.</p>
+            <div class="cta-container">
+                <a href="mailto:info@asas.ai" class="cta-button">Learn More</a>
+                <a href="mailto:info@asas.ai" class="cta-button">Try our AI ↗</a>
+                <a href="#"onclick="toggleLanguage()" class="cta-button">عربي</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const content = {
+            en: {
+                title: "Developing Frontier AI fit for MENA",
+                tagline: "Imagine AI that truly understands you - your language, your culture, your aspirations. For too long, the MENA region has adapted to technology. Now, we're crafting AI that adapts to you. Join us as we build tools that don't just work in Arabic, but think in it. Because the future of AI shouldn't just be accessible - it should feel like home.",
+                learnMore: "Learn More",
+                tryAI: "Try our AI ↗",
+                switchLang: "عربي"
+            },
+            ar: {
+                title: "نطور ذكاءً اصطناعياً متقدماً للشرق الأوسط وشمال أفريقيا",
+                tagline: "تخيل ذكاءً اصطناعياً يفهمك حقاً - لغتك، ثقافتك، تطلعاتك. لفترة طويلة، تكيفت منطقتنا مع التكنولوجيا. الآن، نصمم ذكاءً اصطناعياً يتكيف معك. انضم إلينا ونحن نبني أدوات لا تعمل باللغة العربية فحسب، بل تفكر بها. لأن مستقبل الذكاء الاصطناعي يجب أن يكون أكثر من مجرد متاح - يجب أن يشعرك بأنك في وطنك.",
+                learnMore: "اعرف المزيد",
+                tryAI: "جرب الذكاء الاصطناعي ↖",
+                switchLang: "English"
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            const lang = content[currentLang];
+            
+            // Update content
+            document.querySelector('h1').textContent = lang.title;
+            document.querySelector('.tagline').textContent = lang.tagline;
+            
+            // Update buttons
+            const buttons = document.querySelectorAll('.cta-button');
+            buttons[0].textContent = lang.learnMore;
+            buttons[1].textContent = lang.tryAI;
+            buttons[2].textContent = lang.switchLang;
+            
+            // Update document direction
+            document.body.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            
+            // Update font for Arabic
+            document.body.style.fontFamily = currentLang === 'ar' ? 
+                'Noto Sans Arabic, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' :
+                '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+        }
+
+        class LightingEffect {
+            constructor() {
+                this.svg = document.querySelector('.logo');
+                this.path = this.svg.querySelector('path');
+                this.mouse = { x: window.innerWidth/2, y: window.innerHeight/2 };
+                this.isMouseMoving = false;
+                this.mouseTimeout = null;
+                this.lastRender = 0;
+                this.fps = 60;
+                this.fpsInterval = 1000 / this.fps;
+
+                // Vector field configuration
+                this.vectorPoints = [];
+                this.vectorSpacing = 50;
+                this.influenceRadius = window.innerWidth * 0.05;
+                this.blendFactor = 0.3;
+                this.vectorFieldStrength = 2.5;
+                this.vectorField = {
+                    density: 0.85,      // Increased density for more detail
+                    smoothing: 0.35,    // Slightly reduced smoothing for crisper effect
+                    flowSpeed: 0.8,     // Increased flow speed for more dynamic movement
+                    turbulence: 0.15,   // Added subtle turbulence for organic feel
+                    fadeSpeed: 0.92,    // New: Controls how quickly effects fade
+                    reactivity: 0.75,   // New: How strongly field reacts to mouse
+                    coherence: 0.8      // New: How much vectors influence neighbors
+                };
+
+                // Orbital configurations
+                this.orbitalConfigs = [
+                    { angle: 0, radiusVw: 40, speed: 0.002, intensity: 1.2 },
+                    { angle: Math.PI * 0.2, radiusVw: 35, speed: 0.002, intensity: 1.0 },
+                    { angle: Math.PI * 0.4, radiusVw: 30, speed: 0.002, intensity: 1.1 },
+                    { angle: Math.PI * 0.6, radiusVw: 35, speed: 0.002, intensity: 1.3 },
+                    { angle: Math.PI * 0.8, radiusVw: 40, speed: 0.002, intensity: 0.9 },
+                    { angle: Math.PI, radiusVw: 35, speed: 0.002, intensity: 1.4 },
+                    { angle: Math.PI * 1.2, radiusVw: 30, speed: 0.002, intensity: 0.8 }
+                ];
+
+                // Initialize orbital systems
+                this.orbitalSystems = [];
+                this.updateOrbitalSystems();
+
+                // Improved button tracking
+                this.buttons = document.querySelectorAll('.cta-button');
+                this.buttonStates = new Map();
+                this.initializeButtonTracking();
+                
+                // Debounced resize handler
+                this.debouncedResize = this.debounce(this.handleResize.bind(this), 150);
+
+                this.init();
+            }
+
+            initializeButtonTracking() {
+                this.buttons.forEach(button => {
+                    // Create initial state for each button
+                    const buttonState = {
+                        element: button,
+                        rect: button.getBoundingClientRect(),
+                        rays: this.generateButtonRays(button),
+                        intensity: 0,
+                        isHovered: false
+                    };
+                    
+                    this.buttonStates.set(button, buttonState);
+
+                    // Add event listeners for each button
+                    button.addEventListener('mouseenter', () => this.handleButtonHover(button, true));
+                    button.addEventListener('mouseleave', () => this.handleButtonHover(button, false));
+                });
+            }
+
+            generateButtonRays(button) {
+                const rect = button.getBoundingClientRect();
+                const rays = new Array(24); // Reduced ray count for better performance
+                const radius = Math.max(rect.width, rect.height) / 2;
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                // Pre-calculate constants
+                const angleIncrement = (Math.PI * 2) / rays.length;
+                const initialLength = radius * 0.5;
+                
+                // Use a single loop with direct array assignment
+                for (let i = 0; i < rays.length; i++) {
+                    const angle = i * angleIncrement;
+                    // Cache trig calculations
+                    const cos = Math.cos(angle);
+                    const sin = Math.sin(angle);
+                    
+                    rays[i] = {
+                        angle,
+                        baseX: centerX + cos * radius,
+                        baseY: centerY + sin * radius,
+                        intensity: 0,
+                        length: initialLength,
+                        // Cache these values to avoid recalculating later
+                        cos,
+                        sin
+                    };
+                }
+                
+                return rays;
+            }
+
+            handleButtonHover(button, isHovered) {
+                const state = this.buttonStates.get(button);
+                if (state) {
+                    state.isHovered = isHovered;
+                    state.intensity = isHovered ? 1 : 0;
+                }
+            }
+
+            updateButtonEffects(mouseX, mouseY) {
+                this.buttonStates.forEach((state, button) => {
+                    const rect = button.getBoundingClientRect();
+                    
+                    // Update button rect if changed
+                    if (!this.rectsEqual(rect, state.rect)) {
+                        state.rect = rect;
+                        state.rays = this.generateButtonRays(button);
+                    }
+
+                    // Calculate distance from mouse to button center
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    const mouseDistance = this.getDistance(mouseX, mouseY, centerX, centerY);
+                    const maxDistance = window.innerWidth * 0.2; // 20% of viewport width
+                    
+                    // Calculate base intensity from mouse proximity
+                    let targetIntensity = state.isHovered ? 1 : 
+                        Math.max(0, 1 - (mouseDistance / maxDistance));
+
+                    // Smooth intensity transitions
+                    state.intensity += (targetIntensity - state.intensity) * 0.1;
+
+                    // Update ray intensities
+                    state.rays.forEach(ray => {
+                        const rayDistance = this.getDistance(mouseX, mouseY, ray.baseX, ray.baseY);
+                        const rayInfluence = Math.max(0, 1 - (rayDistance / (maxDistance * 0.5)));
+                        
+                        ray.intensity = Math.max(
+                            state.intensity * 0.3, // Base intensity from button state
+                            rayInfluence // Additional intensity from mouse proximity
+                        );
+
+                        // Update ray length based on intensity
+                        ray.length = ray.intensity * (rect.width * 0.3);
+                    });
+
+                    // Apply visual effects
+                    this.applyButtonEffects(state);
+                });
+            }
+
+            applyButtonEffects(state) {
+                const { element, intensity, rays } = state;
+                
+                // Update button styles
+                const borderIntensity = 0.2 + (intensity * 0.3);
+                const glowIntensity = intensity * 0.5;
+                
+                element.style.borderColor = `rgba(255, 255, 255, ${borderIntensity})`;
+                element.style.boxShadow = `0 0 ${glowIntensity * 20}px rgba(255, 255, 255, ${glowIntensity})`;
+                
+                // Update pseudo-element glow
+                const before = element.querySelector('::before');
+                if (before) {
+                    before.style.borderColor = `rgba(255, 255, 255, ${intensity * 0.25})`;
+                }
+            }
+
+            // Utility functions
+            getDistance(x1, y1, x2, y2) {
+                const dx = x2 - x1;
+                const dy = y2 - y1;
+                return Math.sqrt(dx * dx + dy * dy);
+            }
+
+            rectsEqual(rect1, rect2) {
+                return rect1.left === rect2.left && 
+                       rect1.top === rect2.top && 
+                       rect1.width === rect2.width && 
+                       rect1.height === rect2.height;
+            }
+
+            debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            }
+
+            handleResize() {
+                this.buttonStates.forEach((state, button) => {
+                    state.rect = button.getBoundingClientRect();
+                    state.rays = this.generateButtonRays(button);
+                });
+            }
+
+            init() {
+                this.pathLength = this.path.getTotalLength();
+                this.generateVectorField();
+                this.setupEventListeners();
+                this.animate();
+            }
+
+            generateVectorField() {
+                this.vectorPoints = [];
+                let distance = 0;
+                
+                while (distance <= this.pathLength) {
+                    const point = this.path.getPointAtLength(distance);
+                    const tangent = this.calculateTangent(distance);
+                    const normal = this.calculateNormal(tangent);
+                    
+                    this.vectorPoints.push({
+                        position: point,
+                        tangent: tangent,
+                        normal: normal,
+                        influence: 0.1,  // Starting influence
+                        flow: 0.0
+                    });
+                    
+                    distance += this.vectorSpacing;
+                }
+            }
+
+            calculateTangent(distance) {
+                const delta = 0.1;
+                const p1 = this.path.getPointAtLength(Math.max(0, distance - delta));
+                const p2 = this.path.getPointAtLength(Math.min(this.pathLength, distance + delta));
+                
+                const dx = p2.x - p1.x;
+                const dy = p2.y - p1.y;
+                const len = Math.sqrt(dx * dx + dy * dy);
+                
+                return {
+                    x: dx / len,
+                    y: dy / len
+                };
+            }
+
+            calculateNormal(tangent) {
+                return {
+                    x: -tangent.y,
+                    y: tangent.x
+                };
+            }
+
+            calculateColor(intensity) {
+                const alpha = Math.min(1, intensity * 0.8);
+                const rgb = Math.min(255, Math.floor(255 * intensity));
+                return `rgba(${rgb}, ${rgb}, ${rgb}, ${alpha})`;
+            }
+
+            updateLighting(mouseX, mouseY) {
+                // Cache SVG bounds to avoid recalculating for each vector point
+                const svgRect = this.svg.getBoundingClientRect();
+                
+                // Pre-calculate matrix transform to avoid repeated calls
+                const matrix = this.svg.getScreenCTM();
+                
+                // Create reusable SVG point for transforms
+                const screenPoint = this.svg.createSVGPoint();
+                
+                // Update orbital positions first
+                const orbitalPositions = this.orbitalSystems.map(orbit => {
+                    orbit.angle += orbit.speed;
+                    
+                    // Constrain orbital positions within SVG bounds for better visual effect
+                    return {
+                        x: Math.min(Math.max(
+                            orbit.centerX + Math.cos(orbit.angle) * orbit.radius,
+                            svgRect.left
+                        ), svgRect.right),
+                        y: Math.min(Math.max(
+                            orbit.centerY + Math.sin(orbit.angle) * orbit.radius,
+                            svgRect.top
+                        ), svgRect.bottom),
+                        intensity: orbit.intensity
+                    };
+                });
+
+                // Batch process vector points for better performance
+                this.vectorPoints.forEach(vector => {
+                    // Transform vector position only once
+                    screenPoint.x = vector.position.x;
+                    screenPoint.y = vector.position.y;
+                    const transformedPoint = screenPoint.matrixTransform(matrix);
+                    
+                    // Calculate maximum orbital influence
+                    let maxOrbitalInfluence = 0;
+                    orbitalPositions.forEach(orbit => {
+                        const influence = this.calculatePointInfluence(
+                            orbit.x,
+                            orbit.y,
+                            transformedPoint
+                        ) * orbit.intensity;
+                        maxOrbitalInfluence = Math.max(maxOrbitalInfluence, influence);
+                    });
+
+                    // Calculate mouse influence only if mouse is moving
+                    const mouseInfluence = this.isMouseMoving ? 
+                        this.calculatePointInfluence(mouseX, mouseY, transformedPoint) * 1.5 : 0;
+                    
+                    // Use the stronger of the two influences
+                    const totalInfluence = Math.max(mouseInfluence, maxOrbitalInfluence);
+                    
+                    // Smooth influence transitions for better visual effect
+                    if (totalInfluence > 0) {
+                        vector.influence = Math.max(
+                            vector.influence,
+                            totalInfluence * this.vectorFieldStrength
+                        );
+                    } else {
+                        // Gradual decay when no influence present
+                        vector.influence = Math.max(0.1, vector.influence * 0.95);
+                    }
+                    
+                    // Update flow with reduced calculations
+                    vector.flow = vector.flow * (1 - this.vectorField.flowSpeed) + 
+                                (Math.random() - 0.5) * this.vectorField.turbulence;
+                });
+                
+                // Apply smoothing and update path appearance
+                requestAnimationFrame(() => {
+                    this.smoothVectorField();
+                    this.applyVectorFieldToPath();
+                });
+            }
+            smoothVectorField() {
+                // Create a new array to store smoothed values
+                // Using map with spread operator to create deep copies of vector points
+                // This prevents mutation of original points during smoothing
+                const smoothed = this.vectorPoints.map(vector => ({...vector}));
+                
+                // Iterate through all points except first and last
+                // This creates a moving average window of size 3
+                // Skip edge points since they don't have both neighbors
+                for (let i = 1; i < this.vectorPoints.length - 1; i++) {
+                    // Cache references to previous, current and next points
+                    // This reduces property lookups in the inner loop
+                    const prev = this.vectorPoints[i - 1];
+                    const curr = this.vectorPoints[i];
+                    const next = this.vectorPoints[i + 1];
+                    
+                    // Calculate average flow and influence using the 3-point window
+                    // Division by 3 could be optimized to multiplication by 1/3
+                    // But modern JS engines likely optimize this automatically
+                    smoothed[i].flow = (prev.flow + curr.flow + next.flow) / 3;
+                    smoothed[i].influence = (prev.influence + curr.influence + next.influence) / 3;
+                }
+                
+                // Replace original points with smoothed version
+                // This happens only once per frame, minimizing array assignments
+                this.vectorPoints = smoothed;
+            }
+
+            applyVectorFieldToPath() {
+                // Cache DOM elements and create gradient only once
+                if (!this.defs) {
+                    this.defs = this.svg.querySelector('defs') || 
+                               this.svg.insertBefore(document.createElementNS('http://www.w3.org/2000/svg', 'defs'), 
+                               this.svg.firstChild);
+                    
+                    this.gradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+                    this.gradient.id = 'pathGradient';
+                    this.gradient.setAttribute('gradientUnits', 'userSpaceOnUse');
+                    
+                    const bbox = this.path.getBBox();
+                    this.gradient.setAttribute('x1', bbox.x);
+                    this.gradient.setAttribute('y1', bbox.y);
+                    this.gradient.setAttribute('x2', bbox.x + bbox.width);
+                    this.gradient.setAttribute('y2', bbox.y + bbox.height);
+                    
+                    this.defs.appendChild(this.gradient);
+                    
+                    // Set stroke style once
+                    this.path.style.stroke = 'url(#pathGradient)';
+                    this.path.style.strokeWidth = '1px';
+                }
+
+                // Reuse existing stops or create new ones
+                while (this.gradient.children.length < this.vectorPoints.length) {
+                    this.gradient.appendChild(document.createElementNS('http://www.w3.org/2000/svg', 'stop'));
+                }
+                
+                // Update stop colors directly
+                this.vectorPoints.forEach((vector, i) => {
+                    const stop = this.gradient.children[i];
+                    stop.setAttribute('offset', (i / (this.vectorPoints.length - 1) * 100) + '%');
+                    stop.setAttribute('stop-color', this.calculateColor(this.calculateVectorIntensity(vector)));
+                });
+            }
+
+            calculateVectorIntensity(vector) {
+                // Combine multiplications to reduce operations
+                return vector.influence * this.vectorFieldStrength * (Math.cos(vector.flow) * 0.5 + 0.5) * this.vectorField.density;
+            }
+
+            setupEventListeners() {
+                // Throttle mousemove handler using requestAnimationFrame for better performance
+                let rafId = null;
+                document.addEventListener('mousemove', (e) => {
+                    if (!rafId) {
+                        rafId = requestAnimationFrame(() => {
+                            this.mouse.x = e.clientX;
+                            this.mouse.y = e.clientY;
+                            this.isMouseMoving = true;
+                            rafId = null;
+                            
+                            // Debounce the mouse movement end detection
+                            clearTimeout(this.mouseTimeout); 
+                            this.mouseTimeout = setTimeout(() => {
+                                this.isMouseMoving = false;
+                            }, 100);
+                        });
+                    }
+                }, { passive: true });
+
+                let resizeTimeout;
+                window.addEventListener('resize', () => {
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout(() => {
+                        this.generateVectorField();
+                        this.influenceRadius = window.innerWidth * 0.08;
+                        this.updateOrbitalSystems();
+                    }, 100);
+                });
+            }
+
+            animate(timestamp) {
+                if (timestamp - this.lastRender >= this.fpsInterval) {
+                    this.lastRender = timestamp;
+                    
+                    if (this.isMouseMoving) {
+                        this.updateButtonEffects(this.mouse.x, this.mouse.y);
+                    }
+                    
+                    this.updateOrbitalMotion();
+                    this.updateLighting(this.mouse.x, this.mouse.y);
+                }
+                
+                requestAnimationFrame(this.animate.bind(this));
+            }
+
+            calculatePointInfluence(pointX, pointY, transformedPoint) {
+                const dx = pointX - transformedPoint.x;
+                const dy = pointY - transformedPoint.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < this.influenceRadius) {
+                    return Math.pow(1 - (distance / this.influenceRadius), 2);
+                }
+                return 0;
+            }
+
+            addOrbitalSystem(config) {
+                const radiusVw = config.radiusVw || 20;
+                this.orbitalConfigs.push({
+                    angle: config.angle || 0,
+                    radiusVw: radiusVw,
+                    speed: config.speed || 0.002,
+                    intensity: config.intensity || 1.0
+                });
+                this.updateOrbitalSystems();
+            }
+
+            removeOrbitalSystem(index) {
+                if (index >= 0 && index < this.orbitalSystems.length) {
+                    this.orbitalSystems.splice(index, 1);
+                }
+            }
+
+            updateOrbitalSystems() {
+                this.orbitalSystems = this.orbitalConfigs.map(config => ({
+                    angle: config.angle,
+                    radius: (window.innerWidth * config.radiusVw) / 100,
+                    speed: config.speed,
+                    centerX: window.innerWidth / 2,
+                    centerY: window.innerHeight / 2,
+                    intensity: config.intensity,
+                    color: {r: 255, g: 255, b: 255}
+                }));
+            }
+
+            updateOrbitalMotion() {
+                const time = performance.now() * 0.001;
+                
+                this.orbitalSystems.forEach((orbit, index) => {
+                    // Add slight oscillation to radius
+                    const radiusModulation = Math.sin(time * 0.5) * (window.innerWidth * 0.02);
+                    orbit.radius = (window.innerWidth * this.orbitalConfigs[index].radiusVw) / 100 + radiusModulation;
+                    
+                    // Add varying speeds based on position
+                    const baseSpeed = this.orbitalConfigs[index].speed;
+                    orbit.speed = baseSpeed * (1 + Math.sin(time * 0.3) * 0.2);
+                    
+                    // Add slight oscillation to intensity
+                    orbit.intensity = this.orbitalConfigs[index].intensity * (0.8 + Math.sin(time + index) * 0.2);
+                });
+            }
+
+            generateButtonVectors() {
+                this.buttons.forEach(button => {
+                    const rect = button.getBoundingClientRect();
+                    const vectors = [];
+                    const spacing = 10; // Smaller spacing for buttons
+                    
+                    // Generate points around button perimeter
+                    for (let x = rect.left; x <= rect.right; x += spacing) {
+                        vectors.push({
+                            position: { x, y: rect.top },
+                            influence: 0.1,
+                            flow: 0
+                        });
+                        vectors.push({
+                            position: { x, y: rect.bottom },
+                            influence: 0.1,
+                            flow: 0
+                        });
+                    }
+                    for (let y = rect.top; y <= rect.bottom; y += spacing) {
+                        vectors.push({
+                            position: { x: rect.left, y },
+                            influence: 0.1,
+                            flow: 0
+                        });
+                        vectors.push({
+                            position: { x: rect.right, y },
+                            influence: 0.1,
+                            flow: 0
+                        });
+                    }
+                    
+                    this.buttonVectors.push({
+                        element: button,
+                        vectors: vectors
+                    });
+                });
+            }
+        }
+
+        class StarField {
+            constructor() {
+                this.canvas = document.createElement('canvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.stars = [];
+                this.shootingStars = [];
+                this.starCount = 1000; // Number of stars
+                this.lastShootingStar = 0; // Track last shooting star time
+                
+                // Style and position the canvas
+                Object.assign(this.canvas.style, {
+                    position: 'fixed',
+                    top: '0',
+                    left: '0',
+                    width: '100%',
+                    height: '100%',
+                    pointerEvents: 'none',
+                    zIndex: '-1'
+                });
+                
+                document.body.insertBefore(this.canvas, document.body.firstChild);
+                
+                this.resize();
+                this.initStars();
+                window.addEventListener('resize', () => this.resize());
+                this.animate();
+            }
+
+            resize() {
+                this.width = window.innerWidth;
+                this.height = window.innerHeight;
+                this.canvas.width = this.width;
+                this.canvas.height = this.height;
+            }
+
+            initStars() {
+                this.stars = Array.from({ length: this.starCount }, () => ({
+                    x: Math.random() * this.width,
+                    y: Math.random() * this.height,
+                    size: Math.random() * 1,
+                    opacity: Math.random() * 0.8,
+                    speed: 0.01 + Math.random() * 0.01,
+                    phase: Math.random() * Math.PI * 2
+                }));
+            }
+
+            createShootingStar() {
+                // Create shooting star starting from left or right edge
+                const fromLeft = Math.random() > 0.5;
+                const x = fromLeft ? -20 : this.width + 20;
+                const y = Math.random() * (this.height * 0.7); // Keep in upper 70% of screen
+                
+                return {
+                    x,
+                    y,
+                    length: 80 + Math.random() * 50, // Trail length
+                    speed: 15 + Math.random() * 10,
+                    angle: fromLeft ? (-20 + Math.random() * 20) : (-160 + Math.random() * 20),
+                    opacity: 1,
+                    fadeSpeed: 0.01 + Math.random() * 0.01 // Randomized fade speed
+                };
+            }
+
+            drawStar(star) {
+                const opacity = (Math.sin(star.phase) + 1) * 0.5 * star.opacity;
+                this.ctx.beginPath();
+                this.ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                this.ctx.fillStyle = `rgba(255, ${Math.random() * 50}, ${Math.random() * 30}, ${opacity})`;
+                this.ctx.fill();
+            }
+
+            drawShootingStar(star) {
+                const radians = star.angle * Math.PI / 180;
+                const endX = star.x - Math.cos(radians) * star.length;
+                const endY = star.y + Math.sin(radians) * star.length;
+                
+                // Draw fire effect
+                this.ctx.save();
+                this.ctx.filter = 'blur(4px)';
+                const fireGradient = this.ctx.createLinearGradient(star.x, star.y, endX, endY);
+                fireGradient.addColorStop(0, `rgba(255, 50, 0, ${star.opacity})`);
+                fireGradient.addColorStop(0.3, `rgba(255, 150, 0, ${star.opacity * 0.7})`);
+                fireGradient.addColorStop(0.7, `rgba(255, 100, 0, ${star.opacity * 0.4})`);
+                fireGradient.addColorStop(1, 'rgba(255, 50, 0, 0)');
+                
+                // Draw wider fire trail
+                this.ctx.beginPath();
+                this.ctx.moveTo(star.x, star.y);
+                this.ctx.lineTo(endX, endY);
+                this.ctx.strokeStyle = fireGradient;
+                this.ctx.lineWidth = 6;
+                this.ctx.stroke();
+                this.ctx.restore();
+                
+                // Draw sharp core with enhanced fire gradient
+                const coreGradient = this.ctx.createLinearGradient(star.x, star.y, endX, endY);
+                coreGradient.addColorStop(0, `rgba(255, 255, 255, ${star.opacity})`);
+                coreGradient.addColorStop(0.2, `rgba(255, 200, 0, ${star.opacity * 0.8})`);
+                coreGradient.addColorStop(0.4, `rgba(255, 100, 0, ${star.opacity * 0.6})`);
+                coreGradient.addColorStop(1, 'rgba(255, 50, 0, 0)');
+                
+                this.ctx.beginPath();
+                this.ctx.moveTo(star.x, star.y);
+                this.ctx.lineTo(endX, endY);
+                this.ctx.strokeStyle = coreGradient;
+                this.ctx.lineWidth = 2;
+                this.ctx.stroke();
+
+                // Add particle effects
+                this.drawFireParticles(star, radians);
+            }
+
+            // New method to draw fire particles
+            drawFireParticles(star, radians) {
+                const particleCount = 10;
+                for (let i = 0; i < particleCount; i++) {
+                    const spread = (Math.random() - 0.5) * 30;
+                    const distance = Math.random() * star.length * 0.5;
+                    
+                    const particleX = star.x - Math.cos(radians) * distance + Math.cos(radians + Math.PI/2) * spread;
+                    const particleY = star.y + Math.sin(radians) * distance + Math.sin(radians + Math.PI/2) * spread;
+                    
+                    const size = Math.random() * 2 + 1;
+                    const opacity = (1 - distance/star.length) * star.opacity * Math.random();
+                    
+                    this.ctx.beginPath();
+                    this.ctx.arc(particleX, particleY, size, 0, Math.PI * 2);
+                    this.ctx.fillStyle = `rgba(255, ${Math.random() * 150}, 0, ${opacity})`;
+                    this.ctx.fill();
+                }
+            }
+
+            animate() {
+                this.ctx.clearRect(0, 0, this.width, this.height);
+                
+                // Update and draw regular stars
+                this.stars.forEach(star => {
+                    star.phase += star.speed;
+                    this.drawStar(star);
+                    
+                    // Randomly reposition stars that are nearly invisible
+                    if (Math.sin(star.phase) < -0.95 && Math.random() < 0.1) {
+                        star.x = Math.random() * this.width;
+                        star.y = Math.random() * this.height;
+                        star.phase = 0;
+                    }
+                });
+
+                // Check if we should create a new shooting star
+                const now = Date.now();
+                if (now - this.lastShootingStar > 8000 && Math.random() < 0.1) {
+                    this.shootingStars.push(this.createShootingStar());
+                    this.lastShootingStar = now;
+                }
+
+                // Update and draw shooting stars
+                this.shootingStars = this.shootingStars.filter(star => {
+                    star.x += Math.cos(star.angle * Math.PI / 180) * star.speed;
+                    star.y -= Math.sin(star.angle * Math.PI / 180) * star.speed;
+                    
+                    // Apply custom fade speed with easing
+                    star.opacity = Math.max(0, star.opacity - (star.fadeSpeed * (1 - star.opacity * 0.5)));
+                    
+                    this.drawShootingStar(star);
+                    
+                    // Keep star if it's still visible and on screen
+                    return star.opacity > 0.01 && 
+                           star.x > -100 && star.x < this.width + 100 &&
+                           star.y > -100 && star.y < this.height + 100;
+                });
+                
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+
+        // Initialize both effects when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            new StarField();
+            new LightingEffect();
+        });
+    </script>
+</body>
+</html>
