@@ -1,48 +1,12 @@
 import { Slideshow } from './slideshow.js';
 import { VectorEffect } from './vectorEffect.js';
 import { MatrixEffect } from './matrixEffect.js';
+import { initFireEffect } from './fireEffect.js';
 
-// Language content configuration
-const content = {
-    en: {
-        slides: [
-            "TARO RETURNS",
-            "FROM THE CYBER WASTES OF 2086",
-            "A RADICAL86 LEGEND REBORN",
-            "THE FUTURE OF ERC20 IS HERE",
-            "JOIN THE RESISTANCE"
-        ],
-        main: {
-            title: "TARO RETURNS",
-            tagline: "In the neon-drenched shadows of 2086, a legend emerges. TARO, the RADICAL86 ERC20 token, breaks through time itself to reshape our digital destiny. Not just another token - a cyberpunk revolution in code.",
-            joinResistance: "JOIN THE RESISTANCE",
-            enterGrid: "ENTER THE GRID ↗",
-            switchLang: "日本語"
-        }
-    },
-    ja: {
-        slides: [
-            "タロー リターンズ",
-            "2086年のサイバー荒野から",
-            "RADICAL86の伝説が蘇る",
-            "ERC20の未来、ここに",
-            "レジスタンスに参加せよ"
-        ],
-        main: {
-            title: "タロー リターンズ",
-            tagline: "2086年のネオンに染まる影から、伝説が目覚める。RADICAL86 ERC20トークン「タロー」が、時間を超えてデジタルの運命を作り変える。ただのトークンではない - コードによるサイバーパンク革命。",
-            joinResistance: "レジスタンスに参加",
-            enterGrid: "グリッドに入る ↗",
-            switchLang: "English"
-        }
-    }
-};
 
 class AppController {
     constructor() {
-        this.currentLang = 'en';
         this.initializeEffects();
-        this.setupLanguageSwitcher();
     }
 
     initializeEffects() {
@@ -92,41 +56,8 @@ class AppController {
         });
 
         document.body.appendChild(this.matrixEffect.canvas);
-    }
 
-    setupLanguageSwitcher() {
-        document.querySelector('.lang-switch').addEventListener('click', () => {
-            this.toggleLanguage();
-        });
-    }
-
-    toggleLanguage() {
-        this.currentLang = this.currentLang === 'en' ? 'ja' : 'en';
-        const lang = content[this.currentLang].main;
-        
-        // Update content
-        document.querySelector('h1').textContent = lang.title;
-        document.querySelector('.tagline').textContent = lang.tagline;
-        
-        // Update buttons
-        const buttons = document.querySelectorAll('.cta-button');
-        buttons[0].textContent = lang.joinResistance;
-        buttons[1].textContent = lang.enterGrid;
-        
-        // Update language switch button
-        document.querySelector('.lang-switch').textContent = lang.switchLang;
-        
-        // Update slideshow text if visible
-        if (!document.querySelector('.slideshow-container').classList.contains('hidden')) {
-            this.updateSlideText();
-        }
-    }
-
-    updateSlideText() {
-        const slides = content[this.currentLang].slides;
-        document.querySelectorAll('.slide-text').forEach((element, index) => {
-            element.textContent = slides[index];
-        });
+        initFireEffect();
     }
 }
 

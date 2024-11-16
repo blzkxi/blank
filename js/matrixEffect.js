@@ -8,9 +8,11 @@ export class MatrixEffect {
             speed: options.speed || 50,
             fontSize: options.fontSize || 14,
             fontFamily: options.fontFamily || 'monospace',
-            characters: options.characters || '01',
-            color: options.color || '#0F0',
+            characters: options.characters || '火炎焱燚烈煌熾烽烙焰煊煥熱煬燎燁燒燔燭燬營燮燠燥燧燹燿燕燬煮煉煽熔熄熙煜煸煺煦熏燻熨熬熹熾燉燐燒燌燕燎燠燧燼燿',
+            color: options.color || '#FF0000',
             fadeLength: options.fadeLength || 0.8,
+            blinkRate: options.blinkRate || 0.03,
+            blinkIntensity: options.blinkIntensity || 1.5,
             mouseInteraction: options.mouseInteraction !== false,
             mouseRadius: options.mouseRadius || 150,
             mouseForce: options.mouseForce || 2,
@@ -80,17 +82,15 @@ export class MatrixEffect {
         const distance = Math.sqrt(dx * dx + dy * dy);
         
         if (distance < this.options.mouseRadius) {
-            // Calculate intensity based on distance (closer = stronger effect)
             const intensity = 1 - (distance / this.options.mouseRadius);
             
-            // Create a glowing effect with white core and custom color trail
             if (distance < this.options.mouseRadius * 0.2) {
-                // Inner radius: white glow
-                stream.color = `rgba(255, 255, 255, ${intensity})`;
+                // Inner radius: bright yellow/white for intense heat
+                stream.color = `rgba(255, 255, 200, ${intensity})`;
                 stream.speed = stream.baseSpeed * 2;
             } else {
-                // Outer radius: color trail (cyan/blue effect)
-                stream.color = `rgba(0, 255, 255, ${intensity})`;
+                // Outer radius: orange trail
+                stream.color = `rgba(255, 165, 0, ${intensity})`;
                 stream.speed = stream.baseSpeed * 1.5;
             }
             
@@ -137,9 +137,12 @@ export class MatrixEffect {
     drawStream(stream) {
         // Update characters if needed
         while (stream.characters.length < stream.length) {
-            stream.characters.push(this.options.characters.charAt(
-                Math.floor(Math.random() * this.options.characters.length)
-            ));
+            stream.characters.push({
+                char: this.options.characters.charAt(
+                    Math.floor(Math.random() * this.options.characters.length)
+                ),
+                isBlinking: false
+            });
         }
         
         // Draw each character in the stream
@@ -147,19 +150,30 @@ export class MatrixEffect {
             const y = stream.y - (i * this.options.fontSize);
             const alpha = 1 - (i / stream.length) * this.options.fadeLength;
             
-            if (stream.color) {
-                // Use full stream color for affected streams
-                this.ctx.fillStyle = stream.color;
-            } else {
-                // Default matrix color with fade effect
-                this.ctx.fillStyle = `rgba(0, 255, 0, ${alpha})`;
+            // Random chance to trigger blinking
+            if (Math.random() < this.options.blinkRate) {
+                stream.characters[i].isBlinking = true;
             }
             
-            this.ctx.fillText(stream.characters[i], stream.x, y);
+            if (stream.color) {
+                this.ctx.fillStyle = stream.color;
+            } else {
+                // Default fire color gradient with blinking effect
+                const redIntensity = Math.floor(255 * (1 - (i / stream.length) * 0.7));
+                const blinkMultiplier = stream.characters[i].isBlinking ? this.options.blinkIntensity : 1;
+                const r = Math.min(255, redIntensity * blinkMultiplier);
+                const g = Math.min(255, redIntensity * 0.3 * blinkMultiplier);
+                this.ctx.fillStyle = `rgba(${r}, ${g}, 0, ${alpha})`;
+            }
+            
+            this.ctx.fillText(stream.characters[i].char, stream.x, y);
+            
+            // Reset blink state
+            stream.characters[i].isBlinking = false;
             
             // Increase character change rate near mouse
-            if (stream.color && Math.random() < 0.3) {
-                stream.characters[i] = this.options.characters.charAt(
+            if ((stream.color && Math.random() < 0.3) || Math.random() < 0.01) {
+                stream.characters[i].char = this.options.characters.charAt(
                     Math.floor(Math.random() * this.options.characters.length)
                 );
             }
@@ -167,7 +181,7 @@ export class MatrixEffect {
     }
 
     animate() {
-        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
         this.ctx.fillRect(0, 0, this.width, this.height);
         
         this.ctx.font = `${this.options.fontSize}px ${this.options.fontFamily}`;
